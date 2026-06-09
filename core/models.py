@@ -16,6 +16,7 @@ class Base(models.Model):
 
 class Product(models.Model):
     title = models.CharField('title', max_length=100)
+    sku = models.CharField('sku', max_length=20, unique=True, blank=True, null=True)
     stock = models.IntegerField('stock', default=0)
     price = models.DecimalField('price', max_digits=10, decimal_places=2, default=0)
     description = models.CharField('description', max_length=1000, default='')

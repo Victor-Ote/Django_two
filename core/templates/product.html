@@ -6,6 +6,18 @@
     <title>Product</title>
 </head>
 <body>
-    <h1>Welcome to Product</h1>
+    <center>
+        <h1>Welcome to Product</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="add" placeholder="Add Product">
+            <button type="submit">Add Product</button>
+        </form>
+        {% for product in products %}
+            <h2>Nome: {{ product.title }}</h2>
+            <p>Descrição: {{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+        {% endfor %}
+    </center>
 </body>
 </html>
