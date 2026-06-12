@@ -6,7 +6,7 @@
     <title>Product</title>
 </head>
 <body>
-    
+    <center>
         <h1>Welcome to Product</h1>
         <form action="{% url 'product' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -18,5 +18,6 @@
             <p>Descrição: {{ product.description }}</p>
             <p>Price: ${{ product.price }}</p>
         {% endfor %}
+    </center>
 </body>
 </html>
