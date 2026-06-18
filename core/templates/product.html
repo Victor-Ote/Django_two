@@ -8,11 +8,17 @@
 <body>
     <center>
         <h1>Welcome to Product</h1>
+        <h1>{{ msg }}</h1> 
         <form action="{% url 'product' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Product</button>
+            <input type="text" name="title" placeholder="Title" > <br> <br>
+            <input type="number" name="price" placeholder="Price"> <br> <br>  
+            <input type="number" name="stock" placeholder="Stock"> <br> <br>
+            <input type="text" name="description" placeholder="Description">  <br> <br>           
+            <button type="submit" name="action" value="add">Add Product</button>
+            <button type="submit" name="action" value="delete">Delete Product</button>
         </form>
+       
         {% for product in products %}
             <h2>Nome: {{ product.title }}</h2>
             <p>Descrição: {{ product.description }}</p>
