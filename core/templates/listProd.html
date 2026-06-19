@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Products</title>
+</head>
+<body>
+    <center>
+        <h1>List the Products</h1>
+        <button onclick="location.href = '{% url  'core:createProd' %}'">Add</button>
+    </center>
+        <ul>
+            {% for products in object_list %}
+            <li>{{ products.title }} | {{ products.sku }} </li>
+            {% endfor %}
+        </ul>
+    
+</body>
+</html>
