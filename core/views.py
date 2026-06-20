@@ -5,7 +5,7 @@ from .models import Product
 from .forms import ProductModelForm
 
 
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 def index(request):
     return render(request, 'index.html')
@@ -53,3 +53,15 @@ class ProductCreateView(CreateView):
     fields = '__all__'
     success_url = reverse_lazy('core:listProd')
     template_name = 'createProd.html'
+
+#UPDATE
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = '__all__'
+    success_url = reverse_lazy('core:listProd')
+    template_name = 'createProd.html'
+
+#DELETE
+class ProductDeleteView(DeleteView):
+    queryset = Product.objects.all()
+    success_url = reverse_lazy('core:listProd')
