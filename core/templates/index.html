@@ -11,6 +11,8 @@
     <center>
         <h1>Welcome to Django Two</h1>
         <p>This is the index page.</p>
+        <button onclick="location.href = '{% url  'core:listProd' %}'">List Products</button>  
+        <button onclick="location.href = '{% url  'core:createProd' %}'">Add Product</button>
     </center>
 </body>
 </html>
