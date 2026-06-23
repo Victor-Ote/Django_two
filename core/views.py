@@ -63,5 +63,5 @@ class ProductUpdateView(UpdateView):
 
 #DELETE
 class ProductDeleteView(DeleteView):
-    queryset = Product.objects.all()
+    model = Product
     success_url = reverse_lazy('core:listProd')

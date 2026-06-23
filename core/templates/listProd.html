@@ -1,21 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
     <title>List Products</title>
 </head>
+
 <body>
     <center>
         <h1>List the Products</h1>
         <button onclick="location.href = '{% url  'core:createProd' %}'">Add</button>
+        <input type="submit" value="Back" onclick="location.href = '{% url 'core:index' %}'">
     </center>
-        <ul>
-            {% for products in object_list %}
-            <li>{{ products.title }} | {{ products.sku }} <button onclick="location.href = '{% url 'core:updateProd' products.id %}'">Uptade</button> </li> 
-           
-            {% endfor %}
-        </ul>
-    
+    <ul>
+        {% for products in object_list %}
+        <li>{{ products.title }} | {{ products.sku }}
+            <button onclick="location.href = '{% url 'core:updateProd' products.id %}'">Update</button>
+            <form method="post" action="{% url 'core:deleteProd' products.id %}" onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </li>
+
+        {% endfor %}
+    </ul>
+
 </body>
+
 </html>
